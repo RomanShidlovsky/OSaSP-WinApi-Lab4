@@ -1,6 +1,4 @@
-﻿// OSaSP-WinApi-Lab4.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <Windows.h>
@@ -64,8 +62,6 @@ int main()
 	const wchar_t dir[13] = L"./TestFiles/";
 	InitializeCriticalSection(&criticalSection);
 	InitializeConditionVariable(&conditionVariable);
-	std::list<PTP_WORK> works;
-	PTP_POOL pool = NULL;
 	PTP_WORK_CALLBACK workcallback = MyWorkCallback;
 	WIN32_FIND_DATAW fileData;
 
@@ -92,7 +88,6 @@ int main()
 			delete[] param;
 		}
 
-		
 		FindNextFile(hFind, &fileData);
 	} while (GetLastError() != ERROR_NO_MORE_FILES);
 
